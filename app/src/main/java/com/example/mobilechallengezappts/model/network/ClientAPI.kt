@@ -22,7 +22,7 @@ class ClientAPI() {
 
             if(retrofitInstance == null){
                 retrofitInstance = Retrofit.Builder()
-                    .baseUrl("(https://pokeapi.co/api/v2/pokemon")
+                    .baseUrl("https://pokeapi.co/api/v2/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build()
@@ -30,6 +30,8 @@ class ClientAPI() {
             return retrofitInstance!!
         }
 
-
+        fun getService() : ServiceAPI{
+            return  getRetrofitInstance().create(ServiceAPI::class.java)
+        }
     }
 }
